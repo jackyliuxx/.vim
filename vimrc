@@ -32,19 +32,25 @@ let g:airline#extensions#tabline#buffer_nr_show=1
 function CP_R()
 	
 	if( &ft == 'cpp') 
-		let cpl = 'g++ -w -o "%:r" -std=c++11 "%"' | let exf = '"./%:r"'
+		let cpl = 'g++ -w -o "%:r" -std=c++11 "%"' | let exc = '"./%:r"'
 	elseif( &ft == 'c')
-		let cpl = 'gcc -w -o "%:r" "%"' | let exf = '"./%:r"'
+		let cpl = 'gcc -w -o "%:r" "%"' | let exc = '"./%:r"'
 	elseif( &ft == 'java')
-		let cpl = 'javac "%"' | let exf = 'java "%:r"'
+		let cpl = 'javac "%"' | let exc = 'java "%:r"'
+	elseif( &ft == 'python')
+		let exc = 'python3 "%"'
 	endif
 
 	let pause = 'printf "Press any key to continue..." && read -n 1 && exit'
-	if !exists("cpl")
+	if !exists('exc')
 		echo 'Can''t compile this filetype...'
 		return
 	endif
-	let cp_r = cpl . ' && time ' . exf
+	if exists('cpl')
+		let cp_r = cpl . ' && time ' . exc
+	else
+		let cp_r = 'time ' . exc
+	endif
 	execute '!$COLORTERM -x bash -c ''' . cp_r . ';' . pause . ';exec bash'''
 endfunction
 map <F9> :w<CR>:call CP_R()<CR><ESC>
