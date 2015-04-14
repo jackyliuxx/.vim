@@ -69,7 +69,8 @@ function CP_R()
 	else
 		let cp_r = 'time ' . exc
 	endif
-	execute '!$COLORTERM -x bash -c ''' . cp_r . ';' . pause . ';exec bash'''
+	silent execute '!$COLORTERM -x bash -c ''' . cp_r . ';' . pause . ';exec bash'''
+    redraw!
 endfunction
 map <F9> :w<CR>:call CP_R()<CR><ESC>
 " ^^^^-compile and run-^^^^
