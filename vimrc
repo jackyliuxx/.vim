@@ -50,7 +50,7 @@ let g:ctrlp_prompt_mappings = {
 function CP_R()
 	
 	if( &ft == 'cpp') 
-		let cpl = 'g++ -w -o "%:r" -std=c++11 "%"' | let exc = '"./%:r"'
+		let cpl = 'g++ -w -O3 -o "%:r" -std=c++11 "%"' | let exc = '"./%:r"'
 	elseif( &ft == 'c')
 		let cpl = 'gcc -w -o "%:r" -std=c99 "%"' | let exc = '"./%:r"'
 	elseif( &ft == 'java')
