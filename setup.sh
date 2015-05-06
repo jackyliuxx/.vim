@@ -1,6 +1,6 @@
 #!/bin/sh
 if [ -e "/usr/bin/git" ];then
-
+    echo 'found git!'
 else
     sudo apt-get -y install git
 fi
