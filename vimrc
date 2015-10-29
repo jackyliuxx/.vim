@@ -27,6 +27,7 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set t_Co=256
+colo torte
 set fileencodings=ucs-bom,utf-8,default,big5,latin1
 " for airline
 set laststatus=2
@@ -45,52 +46,17 @@ let g:ctrlp_prompt_mappings = {
     \ 'AcceptSelection("e")': ['<c-t>'],
     \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
     \ }
+" for fold
+set foldcolumn=0
+map <space> za
+autocmd BufWinLeave ?* mkview
+autocmd BufWinEnter ?* silent loadview
+" autocmd BufEnter * loadview
+" autocmd BufLeave * mkview
 
-" vvvv-complie and run-vvvv
-function CP_R( fileinput )
-	
-	if( &ft == 'cpp') 
-		let cpl = 'g++ -w -O3 -o "%:r" -std=c++11 "%"' | let exc = '"./%:r"'
-	elseif( &ft == 'c')
-		let cpl = 'gcc -w -o "%:r" -std=c99 "%"' | let exc = '"./%:r"'
-	elseif( &ft == 'java')
-		let cpl = 'javac "%"' | let exc = 'java "%:r"'
-	elseif( &ft == 'python')
-		let exc = 'python3 "%"'
-    elseif( &ft == 'sh' )
-        let exc = 'sh "%"'
-	endif
-
-	let pause = 'printf "Press any key to continue..." && read -n 1 && exit'
-	if !exists('exc')
-		echo 'Can''t compile or run this file...'
-		return
-	endif
-
-    if a:fileinput
-        call inputsave()
-        let inputfile = input('Input file: ')
-        let outputfile = input('Output file: ')
-        call inputrestore()
-        if inputfile != ''
-            let exc = exc . ' < "' . inputfile . '"'
-        endif
-        if outputfile != ''
-            let exc = exc . ' > "' . outputfile . '"'
-        endif
-    endif
-	
-    if exists('cpl')
-		let cp_r = cpl . ' && time ' . exc
-	else
-		let cp_r = 'time ' . exc
-    endif
-	silent execute '!$COLORTERM -x bash -c ''' . cp_r . ';' . pause . ';exec bash'''
-    redraw!
-endfunction
-map <F9> :w<CR>:call CP_R(0)<CR><ESC>
-map <C-F9> :w<CR>:call CP_R(1)<CR><ESC>
-" ^^^^-compile and run-^^^^
+" for CP_R
+map <F9> :w<CR>:call jackyliuxx#CP_R(0)<CR><ESC>
+map <C-F9> :w<CR>:call jackyliuxx#CP_R(1)<CR><ESC>
 
 " copy all to system clipboard
 map <F10> :%y+<CR>
