@@ -15,6 +15,6 @@ if [ -e "$HOME/.vimrc" ];then
 fi
 cp ./vimrc ~/.vimrc
 vim +PluginInstall +qall
-$sudo apt-get install build-essential cmake python-dev
+$sudo apt-get install -y build-essential cmake python-dev
 cd ~/.vim/bundle/YouCompleteMe
 ./install.py --clang-completer
