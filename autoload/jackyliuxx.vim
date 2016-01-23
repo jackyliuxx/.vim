@@ -4,7 +4,7 @@ function jackyliuxx#CP_R( fileinput )
     let cwd = expand("%:h")
 	
 	if( &ft == 'cpp') 
-		let cpl = 'clang++ -w -o "' . fn2 . '" -std=c++14 "' . fn . '" -lreadline -lpthread' | let exc = '"./' . fn2 . '"'
+		let cpl = 'clang++ -w -o "' . fn2 . '" -std=c++11 "' . fn . '' | let exc = '"./' . fn2 . '"'
 	elseif( &ft == 'c')
 		let cpl = 'clang -w -o "' . fn2 . '" "' . fn . '"' | let exc = '"./' . fn2 . '"'
 	elseif( &ft == 'java')
