@@ -15,6 +15,8 @@ Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'bling/vim-airline'
 Plugin 'kien/ctrlp.vim'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'artur-shaik/vim-javacomplete2'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -46,6 +48,10 @@ let g:ctrlp_prompt_mappings = {
     \ 'AcceptSelection("e")': ['<c-t>'],
     \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
     \ }
+" for easy motion
+let g:EasyMotion_leader_key = '\'
+" for javacomplete2
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
 " for fold
 set foldcolumn=0
 map <space> za
