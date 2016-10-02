@@ -3,9 +3,9 @@ function jackyliuxx#CP_R( fileinput )
     let fn_wo_exp = expand("%:r")
 	
 	if( &ft == 'cpp') 
-		let cpl = 'clang++ -w -o "' . fn_wo_exp . '" -std=c++11 "' . fn . '"' | let exc = '"./' . fn_wo_exp . '"'
+		let cpl = 'g++ -w -o "' . fn_wo_exp . '" -std=c++11 "' . fn . '"' | let exc = '"./' . fn_wo_exp . '"'
 	elseif( &ft == 'c')
-		let cpl = 'clang -w -o "' . fn_wo_exp . '" "' . fn . '"' | let exc = '"./' . fn_wo_exp . '"'
+		let cpl = 'gcc -w -o "' . fn_wo_exp . '" "' . fn . '"' | let exc = '"./' . fn_wo_exp . '"'
 	elseif( &ft == 'java')
 		let cpl = 'javac "' . fn . '"' | let exc = 'java "' . fn_wo_exp . '"'
 	elseif( &ft == 'python')
@@ -16,6 +16,8 @@ function jackyliuxx#CP_R( fileinput )
         let cpl = 'iverilog -o "' . fn_wo_exp . '.vvp" "' . fn . '"' | let exc = 'vvp "' . fn_wo_exp . '.vvp"'
     elseif( &ft == 'javascript' )
         let exc = 'nodejs "' . fn . '"'
+    elseif( &ft == 'matlab' )
+        let exc = 'octave -q "' . fn . '"'
 	endif
 
 	let pause = 'printf "Press any key to continue..." && read -n 1 && exit'
@@ -42,6 +44,6 @@ function jackyliuxx#CP_R( fileinput )
 	else
 		let cp_r = 'time ' . exc
     endif
-	silent execute '!$COLORTERM -x bash -c ''' . cp_r . ';' . pause . ''''
+	silent execute '!gnome-terminal -x bash -c ''' . cp_r . ';' . pause . ''''
     redraw!
 endfunction
