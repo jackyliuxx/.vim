@@ -2,7 +2,9 @@ function jackyliuxx#CP_R( fileinput )
     let fn = expand("%")
     let fn_wo_exp = expand("%:r")
 	
-	if( &ft == 'cpp') 
+    if( getline(1) =~ '^#!' )
+        let cpl = 'chmod +x "' . fn . '"' | let exc = '"./' . fn . '"'
+    elseif( &ft == 'cpp') 
 		let cpl = 'g++ -w -o "' . fn_wo_exp . '" -std=c++11 "' . fn . '"' | let exc = '"./' . fn_wo_exp . '"'
 	elseif( &ft == 'c')
 		let cpl = 'gcc -w -o "' . fn_wo_exp . '" "' . fn . '"' | let exc = '"./' . fn_wo_exp . '"'
