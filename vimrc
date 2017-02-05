@@ -30,6 +30,7 @@ set softtabstop=4
 set shiftwidth=4
 set t_Co=256
 colo torte
+set encoding=utf-8
 set fileencodings=ucs-bom,utf-8,default,big5,latin1
 " for airline
 set laststatus=2
