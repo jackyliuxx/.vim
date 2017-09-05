@@ -17,6 +17,9 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'artur-shaik/vim-javacomplete2'
+Plugin 'python-mode/python-mode'
+Plugin 'pangloss/vim-javascript'
+Plugin 'maxmellon/vim-jsx-pretty'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -32,6 +35,11 @@ set t_Co=256
 colo torte
 set encoding=utf-8
 set fileencodings=ucs-bom,utf-8,default,big5,latin1
+" for python-mode
+let g:pymode_rope = 0
+let g:pymode_lint_on_fly = 1
+let g:pymode_lint_cwindow = 0
+let g:pymode_lint_ignore = "E0602"
 " for airline
 set laststatus=2
 let g:airline_powerline_fonts=1
@@ -45,6 +53,7 @@ set completeopt=menuone
 " for NERDtree-tabs
 map <F8> :NERDTreeTabsToggle<CR>
 " for ctrlp
+let g:ctrlp_custom_ignore = '\v[\/](\.(git|hg|svn)|node_modules)$'
 let g:ctrlp_prompt_mappings = {
     \ 'AcceptSelection("e")': ['<c-t>'],
     \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
@@ -55,7 +64,7 @@ let g:EasyMotion_leader_key = '\'
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
 " for fold
 set foldcolumn=0
-map <space> za
+map <space> zA
 autocmd BufWinLeave ?* mkview
 autocmd BufWinEnter ?* silent loadview
 " autocmd BufEnter * loadview
