@@ -40,7 +40,7 @@ set fileencodings=ucs-bom,utf-8,default,big5,latin1
 let g:pymode_rope = 0
 let g:pymode_lint_on_fly = 1
 let g:pymode_lint_cwindow = 0
-let g:pymode_lint_ignore = "E0602"
+let g:pymode_lint_ignore = "E0602,E712,C901"
 " for airline
 set laststatus=2
 let g:airline_powerline_fonts=1
