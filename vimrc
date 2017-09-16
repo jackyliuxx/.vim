@@ -33,6 +33,7 @@ set softtabstop=4
 set shiftwidth=4
 set t_Co=256
 colo torte
+hi Normal guibg=NONE ctermbg=NONE
 set encoding=utf-8
 set fileencodings=ucs-bom,utf-8,default,big5,latin1
 " for python-mode
