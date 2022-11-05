@@ -1,5 +1,5 @@
-.ycm_extra_conf.pyc
-bundle
+plugged
 view
-powerlinefont
+*.pyc
+*.swp
 .netrwhist
