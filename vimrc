@@ -31,7 +31,6 @@ set laststatus=2
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#buffer_nr_show=1
 " for YouCompleteMe
-let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 let g:ycm_enable_diagnostic_signs = 0
 let g:ycm_key_invoke_completion = '<C-\>' 
 set completeopt=menuone
